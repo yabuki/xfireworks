@@ -1,0 +1,76 @@
+Index: xfireworks-1.3/Makefile
+===================================================================
+--- xfireworks-1.3.orig/Makefile	2012-07-11 04:44:45.000000000 +0900
++++ xfireworks-1.3/Makefile	2012-07-11 05:01:04.000000000 +0900
+@@ -21,53 +21,58 @@
+ 
+ XFIREWORKS_CONF_DIRECTRY = $(LIBDIR)
+ 
++CPPFLAGS:=$(shell dpkg-buildflags --get CPPFLAGS)
++CFLAGS:=$(shell dpkg-buildflags --get CFLAGS)
++CXXFLAGS:=$(shell dpkg-buildflags --get CXXFLAGS)
++LDFLAGS:=$(shell dpkg-buildflags --get LDFLAGS)
++
+ OBJS = main.o AfterImage.o Disp.o ColorGC.o Obj.o Stream.o Piece.o XFireworks.o Calculator.o etc.o arguments.o
+ 
+ all :		xfireworks manual
+ 
+ xfireworks :	$(OBJS)
+-		$(CC) -o xfireworks $(OBJS) -L$(XLIBDIR) $(CFLAGS) $(LFLAGS)
++		$(CC) -o xfireworks $(OBJS) -L$(XLIBDIR) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) $(LFLAGS)
+ 
+ main.o :	main.c
+-		$(CC) -c main.c $(CFLAGS) \
++		$(CC) -c main.c $(CPPFLAGS) $(CFLAGS) \
+ 		-DVERSION=\"$(VERSION)\" \
+ 		-DXFIREWORKS_CONF_DIRECTRY=\"$(XFIREWORKS_CONF_DIRECTRY)\"
+ 
+ AfterImage.o :	AfterImage.c
+-		$(CC) -c AfterImage.c -I$(XINCLUDEDIR) $(CFLAGS)
++		$(CC) -c AfterImage.c -I$(XINCLUDEDIR) $(CPPFLAGS) $(CFLAGS)
+ 
+ Disp.o :	Disp.c
+-		$(CC) -c Disp.c -I$(XINCLUDEDIR) $(CFLAGS)
++		$(CC) -c Disp.c -I$(XINCLUDEDIR) $(CPPFLAGS) $(CFLAGS)
+ 
+ ColorGC.o :	ColorGC.c
+-		$(CC) -c ColorGC.c -I$(XINCLUDEDIR) $(CFLAGS)
++		$(CC) -c ColorGC.c -I$(XINCLUDEDIR) $(CPPFLAGS) $(CFLAGS)
+ 
+ Obj.o :		Obj.c
+-		$(CC) -c Obj.c $(CFLAGS)
++		$(CC) -c Obj.c $(CPPFLAGS) $(CFLAGS)
+ 
+ Stream.o :	Stream.c
+-		$(CC) -c Stream.c $(CFLAGS)
++		$(CC) -c Stream.c $(CPPFLAGS) $(CFLAGS)
+ 
+ Calculator.o :	Calculator.c
+-		$(CC) -c Calculator.c $(CFLAGS)
++		$(CC) -c Calculator.c $(CPPFLAG) $(CFLAGS)
+ 
+ Piece.o :	Piece.c
+-		$(CC) -c Piece.c -I$(XINCLUDEDIR) $(CFLAGS)
++		$(CC) -c Piece.c -I$(XINCLUDEDIR) $(CPPFLAGS)  $(CFLAGS)
+ 
+ XFireworks.o :	XFireworks.c xfireworks_conf.h
+-		$(CC) -c XFireworks.c -I$(XINCLUDEDIR) $(CFLAGS)
++		$(CC) -c XFireworks.c -I$(XINCLUDEDIR) $(CPPFLAGS) $(CFLAGS)
+ 
+ xfireworks_conf.h :	xfireworks.conf mkconf
+ 		cat xfireworks.conf | ./mkconf > xfireworks_conf.h
+ 
+ mkconf :	mkconf.c
+-		$(CC) mkconf.c -o mkconf
++		$(CC) $(CPPFLAGS) $(CFLAGS) mkconf.c -o mkconf
+ 
+ etc.o :		etc.c
+-		$(CC) -c etc.c $(CFLAGS)
++		$(CC) -c etc.c $(CPPFLAGS) $(CFLAGS)
+ 
+ arguments.o :	arguments.c
+-		$(CC) -c arguments.c $(CFLAGS)
++		$(CC) -c arguments.c $(CPPFLAGS) $(CFLAGS)
+ 
+ manual :	xfireworks.6.gz
+ 

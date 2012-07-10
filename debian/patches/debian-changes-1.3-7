@@ -1,0 +1,97 @@
+Description: Upstream changes introduced in version 1.3-7
+ This patch has been created by dpkg-source during the package build.
+ Here's the last changelog entry, hopefully it gives details on why
+ those changes were made:
+ .
+ xfireworks (1.3-7) unstable; urgency=low
+ .
+   * Correct lintian errors
+    - remove prerm
+   * Disp.c (Disp_Create): Fix a bug, replacing NULL to 0.
+ .
+ The person named in the Author field signed this changelog entry.
+Author: Yukiharu YABUKI <yabuki@netfort.gr.jp>
+
+---
+The information above should follow the Patch Tagging Guidelines, please
+checkout http://dep.debian.net/deps/dep3/ to learn about the format. Here
+are templates for supplementary fields that you might want to add:
+
+Origin: <vendor|upstream|other>, <url of original patch>
+Bug: <url in upstream bugtracker>
+Bug-Debian: http://bugs.debian.org/<bugnumber>
+Forwarded: <no|not-needed|url proving that it has been forwarded>
+Reviewed-By: <name and email of someone who approved the patch>
+Last-Update: <YYYY-MM-DD>
+
+--- xfireworks-1.3.orig/xfireworks.1
++++ xfireworks-1.3/xfireworks.1
+@@ -7,7 +7,7 @@
+ .\" the Free Software Foundation; either version 2, or (at your option)
+ .\" any later version.
+ .\" 
+-.TH XFIREWORKS 1 "Release 6" "X Version 11"
++.TH XFIREWORKS 6 "Release 6" "X Version 11"
+ 
+ .SH NAME
+ 
+@@ -176,7 +176,7 @@ X(1)
+ 
+ .SH FILES
+ 
+-.B ./xfireworks.conf, <XRoot>/lib/X11/XFireworks/xfireworks.conf
++.B ./xfireworks.conf, /usr/lib/games/xfireworks/xfireworks.conf
+ .PP
+ The default file to configure XFireworks.
+ .PP
+--- xfireworks-1.3.orig/Makefile
++++ xfireworks-1.3/Makefile
+@@ -69,13 +69,13 @@ etc.o :		etc.c
+ arguments.o :	arguments.c
+ 		$(CC) -c arguments.c $(CFLAGS)
+ 
+-manual :	xfireworks.1.gz
++manual :	xfireworks.6.gz
+ 
+-xfireworks.1.gz :	xfireworks.1
+-		cat xfireworks.1 | gzip > xfireworks.1.gz
++xfireworks.6.gz :	xfireworks.1
++		cat xfireworks.1 | gzip -9 > xfireworks.6.gz
+ 
+ clean :
+-		$(RM) *.o xfireworks xfireworks_conf.h mkconf xfireworks.1.gz
++		$(RM) *.o xfireworks xfireworks_conf.h mkconf xfireworks.6.gz
+ 
+ install :	install-bin install-lib install-man
+ 
+@@ -91,8 +91,8 @@ install-lib :
+ 
+ install-man :	manual
+ 		$(MKDIR) $(MANDIR)
+-		$(CP) xfireworks.1.gz $(MANDIR)
+-		$(CHMOD) 0444 $(MANDIR)/xfireworks.1.gz
++		$(CP) xfireworks.6.gz $(MANDIR)
++		$(CHMOD) 0444 $(MANDIR)/xfireworks.6.gz
+ 
+ uninstall :	uninstall-bin uninstall-lib uninstall-man
+ 
+@@ -103,7 +103,7 @@ uninstall-lib :
+ 		$(RM) $(LIBDIR)/xfireworks.conf
+ 
+ uninstall-man :
+-		$(RM) $(MANDIR)/xfireworks.1.gz
++		$(RM) $(MANDIR)/xfireworks.6.gz
+ 
+ package :
+ 		$(MKDIR) $(PKGNAME)
+--- xfireworks-1.3.orig/Disp.c
++++ xfireworks-1.3/Disp.c
+@@ -64,7 +64,7 @@ Disp Disp_Create(char * display_name, in
+   disp->direct_draw = direct_draw;
+ 
+   if (disp->direct_draw) {
+-    disp->pixmap = NULL;
++    disp->pixmap = 0;
+   } else {
+     disp->pixmap = XCreatePixmap(disp->display, disp->root_window,
+ 				 disp->width, disp->height, disp->depth);

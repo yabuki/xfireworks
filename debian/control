@@ -1,0 +1,14 @@
+Source: xfireworks
+Section: games
+Priority: optional
+Maintainer: Yukiharu YABUKI <yyabuki@debian.org>
+Standards-Version: 3.9.3
+Build-Depends: libx11-dev, debhelper (>= 5)
+
+Package: xfireworks
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Fireworks in your root window
+ XFireworks makes fireworks in the root window on X.
+ This is imitation of Japanese "Hanabi Taikai". It is very popular event
+ in Japanese summer  and  performed  on  some rivers.

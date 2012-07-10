@@ -1,0 +1,2 @@
+?package(xfireworks):needs="X11" section="Games/Toys"\
+  title="xfireworks" command="/usr/games/xfireworks"
