@@ -1,0 +1,48 @@
+* Easy install
+
+	If you want to install xfireworks, operate as below.
+
+	1. Type "make" to compile xfireworks.
+
+		If you type "make", xfireworks and manual are made. But,
+		you need gzip to make the manual. If you have not installed
+		gzip, type "make xfireworks" to make only xfireworks.
+
+		Normally, header files and libraries of X are searched in
+		/usr/X11R6. If they are installed to other directry
+		on your system, edit Makefile and modify X11BASE.
+
+	2. Type "make install" to install the program, data, and manual.
+
+		If you don't make the manual, type
+		"make install-bin ; make install-lib".
+
+		Normally, XFireworks is installed to /usr/X11R6.
+		If you want to install XFireworks to the directry as you like,
+		edit Makefile and modify PREFIX, BINDIR, LIBDIR, and MANDIR.
+
+* For Solaris
+
+	If you want to compile xfireworks on Solaris or SunOS, you may
+	edit Makefile and add -lsocket option to LFLAGS. For example,
+
+	LFLAGS = -lm -lX11 -lsocket
+
+* Uninstall
+
+	If you want to remove xfireworks, operate as below.
+
+	1. Type "make uninstall" to remove the program, data, and manual.
+
+		If you haven't installed the manual, type
+		"make uninstall-bin ; make uninstall-lib".
+
+* Customizing xfireworks
+
+	If you want to customize xfireworks, edit Makefile and configure.h.
+
+* Making fireworks
+
+	You can edit xfireworks.conf to make your original fireworks.
+	If you make original fireworks, please send them to the author!
+

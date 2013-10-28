@@ -1,0 +1,40 @@
+2000.8.2
+	XFireworks-1.3
+	
+	Manage and reuse of second-hand Pieces and AfterImages objests are
+	added to decrease calling malloc() in main loop to decrease load
+	average. (See free_pieces_list and free_after_images_list member
+	of XFireworks class)
+	
+	Bug of ObjList_IsEnd() was modified. (Obj.c)
+	
+	Targets install-bin, install-lib, and install-man in Makefile
+	are modified.
+
+2000.8.1
+	XFireworks-1.2
+
+	Added ColorName and ColorNameList class to manage color name and
+	RGB value to decrease calling XParseColor(). XFireworks starts up
+	more speedy.
+	
+	In Pieces_Create(), collect 6 malloc() to one to decrease
+	load average.
+	
+	Change the directry to put xfireworks.conf from
+	<X-Root>/lib/X11/XFireworks to <X-Root>/etc.
+	
+	Changes Makefile a little.
+
+2000.7.29
+	XFireworks-1.1
+	
+	Added Calculator.c to decrease load average.
+	
+	Pieces_Create() and Pieces_Move() were modified to decrease
+	load average.
+
+2000.7.28
+	XFireworks-1.0
+	
+	first version.

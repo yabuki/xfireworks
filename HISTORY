@@ -1,0 +1,47 @@
+■ XFireworks-1.3 での変更点
+
+使用が終った Pieces オブジェクトと AfterImages オブジェクトをリスト管理し，
+再利用することにより，メインループ中での malloc() 呼び出しを減らした．
+(XFireworks クラスの free_pieces_list, free_after_images_list メンバ参照)
+負荷を抑えるための修正だが，あまり効果はないようだった．
+
+Obj.c の ObjList_IsEnd() にバグあり．修正．
+
+Makefile の install-bin, install-lib, install-man ターゲットに
+$(MKDIR) を追加した．
+(PREFIX = /usr/local だと，/usr/local/etc が存在しない場合があるので)
+
+■ XFireworks-1.2 での変更点
+
+Color "red red 10"
+のようなとき，XPerseColor() が２回呼ばれるのは無駄なので，
+ColorName クラス，ColorNameList クラスを新規に追加し，
+色名をリスト管理して，XPerseColor() が呼ばれる回数を減らした．
+→ 起動時間が半分くらいになったと思う．わりと効果はあった．
+
+Pieces オブジェクトの生成時の，
+x = (double *)malloc(sizeof(double) * n);
+y = (double *)malloc(sizeof(double) * n);
+z = (double *)malloc(sizeof(double) * n);
+のようなのを，
+x = (double *)malloc(sizeof(double) * n * 3);
+y = x + n;
+z = x + 2 * n;
+のようにしてまとめて，メインループ内での malloc() を減らして負荷を下げた．
+→ 言われてみると，多少下がったかも... というくらい．
+
+設定ファイルの置き場所を，
+/usr/X11R6/lib/X11/XFireworks から /usr/X11R6/etc に変更．
+
+Makefile 中の，マニュアル(xfireworks.1.gz)の生成方法を修正．
+
+■ XFireworks-1.1 での変更点
+
+sic,cos を計算するための Calculate クラスを作り，sin,cos を配列化して
+負荷を下げた．
+Pieces_Move() での冗長な計算をループ外に出して，負荷を下げた．
+
+■ XFireworks-1.0 での変更点
+
+新規作成．
+
