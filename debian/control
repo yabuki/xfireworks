@@ -4,6 +4,8 @@ Priority: optional
 Maintainer: Yukiharu YABUKI <yyabuki@debian.org>
 Standards-Version: 3.9.5
 Build-Depends: libx11-dev, debhelper (>= 5)
+Vcs-Git: https://github.com/yabuki/xfireworks
+Vcs-Browser: https://github.com/yabuki/xfireworks
 
 Package: xfireworks
 Architecture: any
