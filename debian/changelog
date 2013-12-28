@@ -1,3 +1,12 @@
+xfireworks (1.3-10) unstable; urgency=low
+
+  [ Yukiharu YABUKI ]
+  * Update Standards-Version
+  * Start to use git-buildpackage
+  * Added Vcs-Git and Vcs-Browser field
+
+ -- Yukiharu YABUKI <yyabuki@debian.org>  Sat, 28 Dec 2013 16:28:59 +0900
+
 xfireworks (1.3-9) unstable; urgency=low
 
   * update standard version
