@@ -1,3 +1,18 @@
+xfireworks (1.3-11) unstable; urgency=low
+
+  [ Yukiharu YABUKI ]
+  * Apply dh_auto_build patch (Closes: #913841).
+  * Bump up Standards-Version
+  * Remove dh_clean -k and Added dh_prep
+  * Bump up debian/compat
+
+  [ Helmut Grohne <helmut@subdivi.de> ]
+  * Fix FTCBFS
+    * Let dh_auto_bild pass cross tools to make.
+    * cross.patch: Use the build architecture compiler for mkconf.c.
+
+ -- Yukiharu YABUKI <yyabuki@debian.org>  Thu, 29 Nov 2018 16:43:19 +0900
+
 xfireworks (1.3-10) unstable; urgency=low
 
   [ Yukiharu YABUKI ]

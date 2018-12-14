@@ -2,6 +2,8 @@
 # Sample debian/rules that uses debhelper.
 # GNU copyright 1997 to 1999 by Joey Hess.
 
+export CC_FOR_BUILD ?= $(CC)
+
 # Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
 
@@ -16,7 +18,7 @@ build-stamp:
 
 	
 	# Add here commands to compile the package.
-	$(MAKE) BINDIR=/usr/games LIBDIR=/etc/X11/xfireworks MANDIR=/usr/share/man/man6
+	dh_auto_build -- BINDIR=/usr/games LIBDIR=/etc/X11/xfireworks MANDIR=/usr/share/man/man6 GZIP=-9n
 
 	touch build-stamp
 
@@ -33,7 +35,7 @@ clean:
 install: build
 	dh_testdir
 	dh_testroot
-	dh_clean -k
+	dh_prep
 	dh_installdirs
 
 	# Add here commands to install the package into debian/xfireworks.

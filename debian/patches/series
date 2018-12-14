@@ -1,2 +1,3 @@
 debian-changes-1.3-7
 hardening
+cross-build-dh_auto_build
