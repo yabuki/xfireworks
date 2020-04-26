@@ -3,6 +3,7 @@ xfireworks (1.3-12) unstable; urgency=low
   [ Yukiharu YABUKI ]
   * Bump up Standards-Version
   * Bump up debian/compat
+  * Change maintainance repo, Vcs-Git and Vcs-Browser field.
 
  -- Yukiharu YABUKI <yyabuki@debian.org>  Sun, 26 Apr 2020 19:44:19 +0900
 

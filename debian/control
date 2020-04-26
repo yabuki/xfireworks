@@ -2,12 +2,10 @@ Source: xfireworks
 Section: games
 Priority: optional
 Maintainer: Yukiharu YABUKI <yyabuki@debian.org>
-Standards-Version: 4.2.1
-Build-Depends: libx11-dev, debhelper (>= 7)
-Vcs-Git: https://github.com/yabuki/xfireworks
-Vcs-Browser: https://github.com/yabuki/xfireworks
 Standards-Version: 4.5.0
 Build-Depends: libx11-dev, debhelper (>= 13)
+Vcs-Git: https://salsa.debian.org/debian/xfireworks
+Vcs-Browser: https://salsa.debian.org/debian/xfireworks
 
 Package: xfireworks
 Architecture: any
