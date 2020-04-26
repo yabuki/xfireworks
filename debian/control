@@ -6,6 +6,8 @@ Standards-Version: 4.2.1
 Build-Depends: libx11-dev, debhelper (>= 7)
 Vcs-Git: https://github.com/yabuki/xfireworks
 Vcs-Browser: https://github.com/yabuki/xfireworks
+Standards-Version: 4.5.0
+Build-Depends: libx11-dev, debhelper (>= 13)
 
 Package: xfireworks
 Architecture: any
