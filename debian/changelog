@@ -1,3 +1,9 @@
+xfireworks (1.3-13) UNRELEASED; urgency=medium
+
+  * Trim trailing whitespace.
+
+ -- Debian Janitor <janitor@jelmer.uk>  Tue, 05 May 2020 10:26:21 +0000
+
 xfireworks (1.3-12) unstable; urgency=low
 
   [ Yukiharu YABUKI ]
@@ -70,7 +76,7 @@ xfireworks (1.3-6) unstable; urgency=low
    - In menu file.
    -   Added quote for needs and section.
    - In rules file.
-   -   Do not use -$(MAKE). Change [ ! -f Makefile ] || $(MAKE). 
+   -   Do not use -$(MAKE). Change [ ! -f Makefile ] || $(MAKE).
    -   Change working directory 'tmp' to 'xfireworks'.
   * Make debian/compat file.
    - Do not set DH_COMPAT in rules file.
